@@ -39,7 +39,17 @@ namespace AccountBalance
                 streamWriter.Flush();
                 streamWriter.Close();
             }
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
+                // Get the stream associated with the response.
+            Stream receiveStream = response.GetResponseStream();
+
+                // Pipes the stream to a higher level stream reader with the required encoding format. 
+             StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+
+            Console.WriteLine(readStream.ReadToEnd());
+                response.Close();
+                readStream.Close();
 
         }
     }
