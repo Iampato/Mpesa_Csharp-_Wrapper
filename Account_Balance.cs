@@ -20,7 +20,9 @@ namespace AccountBalance
             request.ContentType = "application/json";
             request.Headers.Add("cache-control", "no-cache");
 
-           
+           	request.KeepAlive = false;
+            request.Method = "POST";
+
 
 
 
