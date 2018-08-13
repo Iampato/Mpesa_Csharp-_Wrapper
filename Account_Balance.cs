@@ -24,6 +24,21 @@ namespace AccountBalance
             request.Method = "POST";
 
 
+            using (StreamWriter streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                string json = "{\"Initiator\":\" \"," +
+                              "\"SecurityCredential\":\" \"," +
+                              "\"CommandID\":\"AccountBalance\"," +
+                              "\"PartyA\":\" \"," +
+                              "\"IdentifierType\":\"4\"," +
+                              "\"Remarks\":\" \"," +
+                              "\"QueueTimeOutURL\":\"https://ip_address:port/timeout_url\"," +
+                              "\"ResultURL\":\"https://ip_address:port/result_url\"}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
 
 
         }
